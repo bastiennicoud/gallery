@@ -29,7 +29,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function galleries () {
+    public function galleries ()
+    {
         return $this->hasMany(Gallery::class);
     }
 }

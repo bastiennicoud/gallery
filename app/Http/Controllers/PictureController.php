@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Picture;
 use Illuminate\Http\Request;
+use App\Http\Requests\PictureForm;
 
 class PictureController extends Controller
 {
@@ -33,7 +34,7 @@ class PictureController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PictureForm $request)
     {
         //
     }

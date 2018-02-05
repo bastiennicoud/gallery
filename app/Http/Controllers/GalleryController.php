@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Gallery;
 use Illuminate\Http\Request;
+use App\Http\Requests\GalleryForm;
+use Illuminate\Support\Facades\Auth;
 
 class GalleryController extends Controller
 {
@@ -14,7 +16,7 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        //
+        return view('gallery.index');
     }
 
     /**
@@ -33,9 +35,13 @@ class GalleryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GalleryForm $request)
     {
-        //
+        $gallery = new Gallery($request->all());
+        $gallery->user()->associate(Auth::user());
+        $gallery->save();
+
+        return redirect()->route('gallery.index');
     }
 
     /**

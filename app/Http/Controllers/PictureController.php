@@ -36,9 +36,13 @@ class PictureController extends Controller
      */
     public function store(PictureForm $request)
     {
+
         $picture = new Picture($request->all());
         $picture->gallery_id = 1;
-        $picture->path = '/tutu/toto/mypics.jpg';
+
+        $path = $request->file('path')->store('pictures');
+
+        $picture->path = $path;
         $picture->save();
 
         return redirect()->route('picture.index');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Picture;
 use Illuminate\Http\Request;
 use App\Http\Requests\PictureForm;
+use Illuminate\Support\Facades\Storage;
 
 class PictureController extends Controller
 {
@@ -15,6 +16,7 @@ class PictureController extends Controller
      */
     public function index()
     {
+        //$files = Storage::files('pictures');
         return view('picture.index');
     }
 
@@ -40,7 +42,7 @@ class PictureController extends Controller
         $picture = new Picture($request->all());
         $picture->gallery_id = 1;
 
-        $path = $request->file('path')->store('pictures');
+        $path = $request->file('path')->storePublicly('pictures');
 
         $picture->path = $path;
         $picture->save();

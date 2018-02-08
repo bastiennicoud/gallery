@@ -15,7 +15,7 @@ class PictureController extends Controller
      */
     public function index()
     {
-        //
+        return view('picture.index');
     }
 
     /**
@@ -36,7 +36,12 @@ class PictureController extends Controller
      */
     public function store(PictureForm $request)
     {
-        //
+        $picture = new Picture($request->all());
+        $picture->gallery_id = 1;
+        $picture->path = '/tutu/toto/mypics.jpg';
+        $picture->save();
+
+        return redirect()->route('picture.index');
     }
 
     /**

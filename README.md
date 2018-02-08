@@ -1,4 +1,4 @@
-# Gallery
+# Gallery **v1.0.0**
 
 A little web app for the CLD2 module.
 

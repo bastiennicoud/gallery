@@ -21,7 +21,7 @@
 
                       <div class="col-sm-6 col-md-4">
                         <div class="thumbnail">
-                          <img src="{{ Storage::url($image->path) }}" alt="{{ $image->title }}">
+                          <img src="{{ Storage::disk('s3')->temporaryUrl($image->path, now()->addMinutes(5)) }}" alt="{{ $image->title }}">
                           <div class="caption">
                             <h3>{{ $image->title }}</h3>
                           </div>

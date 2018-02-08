@@ -52,7 +52,7 @@ class GalleryController extends Controller
      */
     public function show(Gallery $gallery)
     {
-        //
+        return view('gallery.show')->with(compact('gallery'));
     }
 
     /**

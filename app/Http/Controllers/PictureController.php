@@ -6,6 +6,7 @@ use App\Picture;
 use Illuminate\Http\Request;
 use App\Http\Requests\PictureForm;
 use Illuminate\Support\Facades\Storage;
+use Kfirba\Directo\Support\Facades\Directo;
 
 class PictureController extends Controller
 {
@@ -25,7 +26,7 @@ class PictureController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Directo $directo)
     {
         return view('picture.create');
     }

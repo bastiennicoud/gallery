@@ -48,6 +48,17 @@
                         </div>
 
                     </form>
+
+                    {{-- Direct upload to s3 --}}
+                    <form action="{{ Directo::formUrl() }}" method="post" enctype="multipart/form-data">
+                        {!! Directo::inputsAsHtml() !!}
+                        
+                        <input type="file" name="file">
+                        <button type="submit" class="btn btn-primary">
+                            Uploader limage
+                        </button>
+                    </form>
+
                 </div>
             </div>
         </div>

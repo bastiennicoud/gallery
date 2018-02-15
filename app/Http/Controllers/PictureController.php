@@ -26,7 +26,7 @@ class PictureController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Directo $directo)
+    public function create()
     {
         return view('picture.create');
     }
@@ -42,10 +42,6 @@ class PictureController extends Controller
 
         $picture = new Picture($request->all());
         $picture->gallery_id = 1;
-
-        $path = $request->file('path')->store('bastien', ['disk' => 's3']);
-
-        $picture->path = $path;
         $picture->save();
 
         return redirect()->route('picture.index');

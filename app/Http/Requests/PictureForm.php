@@ -25,7 +25,7 @@ class PictureForm extends FormRequest
     {
         return [
             'title' => ['required', 'max:255'],
-            'path' => ['required', 'image']
+            'path' => ['required', 'max:255']
         ];
     }
 }

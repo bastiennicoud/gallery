@@ -39,24 +39,18 @@
                             </div>
                         </div>
 
+                        {{--  The inputs with the amazon direct upload datas  --}}
+                        <input type="hidden" name="amazon-submit-url" value="{{ Directo::formUrl() }}">
+                        {!! Directo::inputsAsHtml() !!}
+
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button id="submit-image-field" type="submit" class="btn btn-primary">
                                     Create
                                 </button>
                             </div>
                         </div>
 
-                    </form>
-
-                    {{-- Direct upload to s3 --}}
-                    <form action="{{ Directo::formUrl() }}" method="post" enctype="multipart/form-data">
-                        {!! Directo::inputsAsHtml() !!}
-                        
-                        <input type="file" name="file">
-                        <button type="submit" class="btn btn-primary">
-                            Uploader limage
-                        </button>
                     </form>
 
                 </div>

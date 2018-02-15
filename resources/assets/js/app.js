@@ -5,6 +5,7 @@
  */
 
 require('./bootstrap')
+//require('./awsS3.js')
 
 console.log('TUTU')
 
@@ -62,7 +63,8 @@ $('#submit-image-field').click((e) => {
             "key" : filename,
             "file" : file
         },
-        contentType: 'multipart/form-data'
+        processData: false,
+        contentType: false
     }).success(function (data) {
         console.log(data)
     })

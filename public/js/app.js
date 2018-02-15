@@ -760,6 +760,7 @@ module.exports = __webpack_require__(32);
  */
 
 __webpack_require__(9);
+//require('./awsS3.js')
 
 console.log('TUTU');
 
@@ -817,7 +818,8 @@ $('#submit-image-field').click(function (e) {
             "key": filename,
             "file": file
         },
-        contentType: 'multipart/form-data'
+        processData: false,
+        contentType: false
     }).success(function (data) {
         console.log(data);
     });

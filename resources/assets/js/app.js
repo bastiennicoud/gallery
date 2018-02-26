@@ -7,7 +7,7 @@
 require('./bootstrap')
 //require('./awsS3.js')
 
-console.log('TUTU')
+//console.log('TUTU')
 
 var randomString = function () {
     let str = Math.random().toString(36).replace('0.', '') + Math.random().toString(36).replace('0.', '')
@@ -15,7 +15,7 @@ var randomString = function () {
     return str
 }
 
-console.log(randomString())
+//console.log(randomString())
 
 // Submit the form for s3 direct upload
 $('#submit-image-field').click((e) => {
@@ -40,12 +40,12 @@ $('#submit-image-field').click((e) => {
     let file = fileInput.files[0];
     let filename = file.name;
 
-    console.log(policy)
+    //console.log(policy)
 
     // Create a file name
     filename = 'bastien/' + randomString() + image.name
 
-    console.log('Filename :' + filename)
+    //console.log('Filename :' + filename)
     //console.log(awsURL)
 
     let fd = new FormData()
@@ -55,6 +55,7 @@ $('#submit-image-field').click((e) => {
     fd.append('success_action_redirect', redirect)
     fd.append('success_action_status', status)
     fd.append('policy', policy)
+    fd.append('acl', acl)
     fd.append('X-amz-credential', XamzCredential)
     fd.append('X-amz-algorithm', XamzAlgorithm)
     fd.append('X-amz-date', XamzDate)
@@ -68,7 +69,23 @@ $('#submit-image-field').click((e) => {
         data : fd,
         processData: false,
         contentType: false
-    }).success(function (data) {
-        console.log(data)
+    }).done(function (data) {
+        $('#ajax-success').append('<div class="alert alert-success" role="alert">S3 upload OK !</div>')
+    })
+
+    // Ajax call to laravel app
+    $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        type: 'POST',
+        url: '/picture',
+        dataType: 'json',
+        data: {
+            title : name,
+            path : filename
+        }
+    }).done(function (data) {
+        $('#ajax-success').append('<div class="alert alert-success" role="alert">Laravel app save OK</div>')
     })
 })

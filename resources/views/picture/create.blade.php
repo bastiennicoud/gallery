@@ -8,6 +8,10 @@
                 <div class="panel-heading">Ajouter une photo</div>
 
                 <div class="panel-body">
+                    <div id="ajax-success">
+
+                    </div>
+
                     <form class="form-horizontal" method="POST" action="{{ route('picture.store') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 

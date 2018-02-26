@@ -795,29 +795,32 @@ $('#submit-image-field').click(function (e) {
     var file = fileInput.files[0];
     var filename = file.name;
 
+    console.log(policy);
+
     // Create a file name
     filename = 'bastien/' + randomString() + image.name;
 
-    console.log(filename);
-    console.log(awsURL);
+    console.log('Filename :' + filename);
+    //console.log(awsURL)
+
+    var fd = new FormData();
+
+    fd.append('key', filename);
+    fd.append('Content-Type', '');
+    fd.append('success_action_redirect', redirect);
+    fd.append('success_action_status', status);
+    fd.append('policy', policy);
+    fd.append('X-amz-credential', XamzCredential);
+    fd.append('X-amz-algorithm', XamzAlgorithm);
+    fd.append('X-amz-date', XamzDate);
+    fd.append('X-amz-signature', XamzSignature);
+    fd.append('file', file);
 
     // Ajax call to s3 drive
     $.ajax({
         type: 'POST',
         url: awsURL,
-        data: {
-            "acl": acl,
-            "Content-Type": '',
-            "success_action_redirect": redirect,
-            "success_action_status": status,
-            "policy": policy,
-            "X-amz-credential": XamzCredential,
-            "X-amz-algorithm": XamzAlgorithm,
-            "X-amz-date": XamzDate,
-            "X-amz-signature": XamzSignature,
-            "key": filename,
-            "file": file
-        },
+        data: fd,
         processData: false,
         contentType: false
     }).success(function (data) {

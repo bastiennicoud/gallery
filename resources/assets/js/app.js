@@ -24,7 +24,6 @@ $('#submit-image-field').click((e) => {
 
     // gets the form datas
     let name           = $("input[name*='title']").val()
-    let image          = document.getElementById('path').files[0]
     let awsURL         = $("input[name*='amazon-submit-url']").val()
     let acl            = $("input[name*='acl']").val()
     let redirect       = $("input[name*='success_action_redirect']").val()
@@ -43,7 +42,7 @@ $('#submit-image-field').click((e) => {
     //console.log(policy)
 
     // Create a file name
-    filename = 'bastien/' + randomString() + image.name
+    filename = 'bastien/' + randomString() + filename
 
     //console.log('Filename :' + filename)
     //console.log(awsURL)

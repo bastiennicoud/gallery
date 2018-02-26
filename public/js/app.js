@@ -779,7 +779,6 @@ $('#submit-image-field').click(function (e) {
 
     // gets the form datas
     var name = $("input[name*='title']").val();
-    var image = document.getElementById('path').files[0];
     var awsURL = $("input[name*='amazon-submit-url']").val();
     var acl = $("input[name*='acl']").val();
     var redirect = $("input[name*='success_action_redirect']").val();
@@ -798,7 +797,7 @@ $('#submit-image-field').click(function (e) {
     //console.log(policy)
 
     // Create a file name
-    filename = 'bastien/' + randomString() + image.name;
+    filename = 'bastien/' + randomString() + filename;
 
     //console.log('Filename :' + filename)
     //console.log(awsURL)

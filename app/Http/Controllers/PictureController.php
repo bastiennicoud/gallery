@@ -40,11 +40,14 @@ class PictureController extends Controller
     public function store(PictureForm $request)
     {
 
+
         $picture = new Picture($request->all());
         $picture->gallery_id = 1;
         $picture->save();
 
-        return redirect()->route('picture.index');
+        return response()->json([
+            "success" => "Enregistrement OK"
+        ]);
     }
 
     /**

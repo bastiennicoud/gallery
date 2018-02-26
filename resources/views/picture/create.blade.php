@@ -8,7 +8,11 @@
                 <div class="panel-heading">Ajouter une photo</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ Directo::formUrl() }}" enctype="multipart/form-data">
+                    <div id="ajax-success">
+
+                    </div>
+
+                    <form class="form-horizontal" method="POST" action="{{ route('picture.store') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
@@ -41,6 +45,7 @@
 
                         {{--  The inputs with the amazon direct upload datas  --}}
                         <input type="hidden" name="amazon-submit-url" value="{{ Directo::formUrl() }}">
+                        {!! Directo::inputsAsHtml() !!}
 
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">

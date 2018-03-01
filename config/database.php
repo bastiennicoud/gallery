@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'pgsql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -60,7 +60,7 @@ return [
             'driver' => 'pgsql',
             'host' => $dbopts["host"],
             'port' => $dbopts["port"],
-            'database' => ltrim($dbopts["path"],'/')
+            'database' => substr($url["path"], 1),
             'username' => $dbopts["user"],
             'password' => $dbopts["pass"],
             'charset' => 'utf8',

@@ -1,4 +1,6 @@
 <?php
+    
+$dbopts = parse_url(getenv('DATABASE_URL'));
 
 return [
 
@@ -30,8 +32,6 @@ return [
     | choice installed on your machine before you begin development.
     |
     */
-    
-    $dbopts = parse_url(getenv('DATABASE_URL'));
 
     'connections' => [
 

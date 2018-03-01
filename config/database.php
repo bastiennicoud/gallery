@@ -60,7 +60,7 @@ return [
             'driver' => 'pgsql',
             'host' => $dbopts["host"],
             'port' => $dbopts["port"],
-            'database' => substr($url["path"], 1),
+            'database' => substr($dbopts["path"], 1),
             'username' => $dbopts["user"],
             'password' => $dbopts["pass"],
             'charset' => 'utf8',
